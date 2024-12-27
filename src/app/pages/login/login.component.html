@@ -1,0 +1,25 @@
+<article>
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+
+    <main>
+      <h1>Registrazione</h1>
+      <!-- <p>I campi contrassegnati dall'asterisco * sono obbligatori</p> -->
+
+      <div *ngFor="let field of fieldsService.fields; let i=index">
+        <div>
+          <input  [type]="field.type"
+                  [id]="field.title" [name]="field.title" value=""
+                  [placeholder]="field.title" [formControlName]="field.title">
+          <label [for]="field.title">{{ field.title | uppercase }}</label>
+          <!-- ingrandisce la prima lettera ed aggiunge l'asterisco -->
+        </div>
+      </div>
+    </main>
+    
+    <footer>
+      <button type="submit" [disabled]="form.invalid">Registrati</button>
+      <button routerLink="/access">Accedi</button>
+    </footer>
+
+  </form>
+</article>
